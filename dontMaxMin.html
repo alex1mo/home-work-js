@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <script>
+      var min = prompt("Введите минимальное число");
+      var max = prompt("Введите максимальное число");
+
+      var arr = randomArr(min, max);
+      console.log(arr);
+
+      function randomArr(min, max) {
+        var arr = [];
+        var randLeng = positive();
+        for (var i = 0; i < randLeng; i++) {
+          var random = randNum();
+          if (random < min || random > max) {
+            arr[arr.length] = random;
+          } else {
+            i--;
+          }
+        }
+        return arr;
+      }
+
+      function positive(limit) {
+        limit = parseFloat(limit);
+        if (limit) {
+          return parseInt(Math.random() * limit);
+        } else {
+          return parseInt(Math.random() * 101);
+        }
+      }
+
+      function randNum(limit) {
+        limit = parseFloat(limit);
+        if (limit) {
+          return parseInt((Math.random() - 0.5) * 2 * limit);
+        } else {
+          return parseInt((Math.random() - 0.5) * 2 * 101);
+        }
+      }
+
+    </script>
+  </div>
+</body>
+
+</html>
