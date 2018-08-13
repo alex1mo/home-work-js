@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    section {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    div.x {
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div.r {
+      background: rgb(255, 0, 0);
+    }
+
+    div.g {
+      background: rgb(0, 255, 0);
+    }
+
+    div.b {
+      background: rgb(0, 0, 255);
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    var w = +prompt();
+    var h = +prompt();
+
+    var html = "";
+    var colors = ["r", "g", "b"];
+    for (var i = 0; i < h; i++) {
+      html += "<section>";
+      for (var j = 0; j < w; j++) {
+        var color = colors[parseInt(Math.random() * 3)];
+        var randomNum = parseInt(Math.random() * 100);
+        html += `<div class='x ${color}'>${randomNum}</div>`;
+      }
+      html += "</section>";
+    }
+
+    document.write(html);
+
+  </script>
+</body>
+
+</html>
