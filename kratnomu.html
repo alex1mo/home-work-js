@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <script>
+      var arr = randomArr();
+      var krat = parseInt(prompt("Введите число"));
+      var newArr = kratnomy(arr, krat);
+      console.log(newArr);
+
+      function kratnomy(arr, index) {
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] % index === 0) {
+            newArr[newArr.length] = arr[i];
+          }
+        }
+        return newArr;
+      }
+
+      function randomArr() {
+        var arr = [];
+        var randLeng = positive();
+        var randToken = [-1, 0, 1];
+        randToken = randToken[positive(3)];
+        for (var i = 0; i < randLeng; i++) {
+          if (randToken > 0) {
+            arr[i] = positive();
+          } else if (randToken < 0) {
+            arr[i] = negative();
+          } else {
+            arr[i] = randNum();
+            if (arr[i] >= 0) {
+              arr[arr.length] = arr[i];
+            } else {
+              arr[arr.length] = arr[i];
+            }
+          }
+        }
+        return arr;
+      }
+
+      function randNum(limit) {
+        limit = parseFloat(limit);
+        if (limit) {
+          return parseInt((Math.random() - 0.5) * 2 * limit);
+        } else {
+          return parseInt((Math.random() - 0.5) * 2 * 101);
+        }
+      }
+
+      function positive(limit) {
+        limit = parseFloat(limit);
+        if (limit) {
+          return parseInt(Math.random() * limit);
+        } else {
+          return parseInt(Math.random() * 101);
+        }
+      }
+
+      function negative(limit) {
+        limit = parseFloat(limit);
+        if (limit) {
+          return parseInt((Math.random() - 1) * limit);
+        } else {
+          return parseInt((Math.random() - 1) * 101);
+        }
+      }
+    </script>
+  </div>
+</body>
+
+</html>
