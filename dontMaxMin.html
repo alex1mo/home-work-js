@@ -18,11 +18,13 @@
       console.log(arr);
 
       function randomArr(min, max) {
+        var newMin = min < max ? min : max;
+        var newMax = max > min ? max : min;
         var arr = [];
         var randLeng = positive();
         for (var i = 0; i < randLeng; i++) {
           var random = randNum();
-          if (random < min || random > max) {
+          if (random < newMin || random > newMax) {
             arr[arr.length] = random;
           } else {
             i--;
