@@ -127,13 +127,18 @@
 
     if (instruction === "git") {
       instruction = generateHTML(git);
+      document.write(instruction);
     } else if (instruction === "yarn") {
       instruction = generateHTML(yarn);
+      document.write(instruction);
     } else if (instruction === "npm") {
       instruction = generateHTML(npm);
+      document.write(instruction);
+    } else {
+      alert("Введите git или yarn или npm")
     }
 
-    document.write(instruction);
+
 
     function generateHTML(arr) {
       var html = `<section>`;
