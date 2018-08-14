@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var git = [
+      `<br>git add<br>
+  <br>Команда git add добавляет содержимое рабочей директории в индекс (staging area) для последующего коммита. По умолчанию git commit использует лишь этот индекс, так что вы можете использовать git add для сборки слепка вашего следующего коммита. Это одна из ключевых команд Git, мы упоминали о ней десятки раз на страницах книги. Ниже перечислены наиболее интересные варианты использования этой команды. Знакомство с этой командой происходит в главе Отслеживание новых файлов. О том как использовать git add для разрешения конфликтов слияния написано в главе Основные конфликты слияния. В главе Интерактивное индексирование показано как использовать git add для добавления в индекс лишь отдельных частей изменённого файла. В главе Деревья показано как эта команда работает на низком уровне, чтобы вы понимали, что происходит за кулисами.<br>`,
+      `<br>git status<br>
+  <br>Команда git status показывает состояния файлов в рабочей директории и индексе: какие файлы изменены, но не добавлены в индекс; какие ожидают коммита в индексе. Вдобавок к этому выводятся подсказки о том, как изменить состояние файлов.
+  Мы познакомили вас с этой командой в главе Определение состояния файлов, разобрали стандартный и упрощённый формат вывода. И хотя мы использовали git status повсеместно в этой книге, практически все варианты использования покрыты в указанной главе.`,
+      `<br>git diff<br>
+  <br>Команда git diff используется для вычисления разницы между любыми двумя Git деревьями. Это может быть разница между вашей рабочей директорией и индексом (собственно git diff), разница между индексом и последним коммитом (git diff --staged), или между любыми двумя коммитами (git diff master branchB).<br>
+  Мы познакомили вас с основами этой команды в главе Просмотр индексированных и неиндексированных изменений, где показали как посмотреть какие изменения уже добавлены в индекс, а какие — ещё нет.<br>
+  О том как использовать эту команду для проверки на проблемы с пробелами с помощью аргумента --check можно почитать в главе Commit Guidelines.<br>
+  <br>Мы показали вам как эффективно сравнивать ветки используя синтаксис git diff A...B в главе Determining What Is Introduced.<br>
+  <br>В главе Продвинутое слияние показано использование опции -w для скрытия различий в пробельных символах, а также рассказано как сравнивать конфликтующие изменения с опциями --theirs, --ours и --base.<br>
+  Использование этой команды с опцией --submodule для сравнения изменений в субмодулях показано в главе Начало работы с подмодулями.<br>`,
+      `<br>git difftool<br>
+  <br>Команда git difftool просто запускает внешнюю утилиту сравнения для показа различий в двух деревьях, на случай если вы хотите использовать что-либо отличное от встроенного просмотрщика git diff.<br>
+  <br>Мы лишь вкратце упомянули о ней в главе Просмотр индексированных и неиндексированных изменений.<br>`
+    ];
+
+    var npm = [
+      `<br>Установка npm<br>
+  <br>curl https://npmjs.org/install.sh | sh  <br>
+  Обновление npm<br>
+  Есть несколько способов чтобы обновить npm. Я предпочитаю:<br>
+  curl https://npmjs.org/install.sh | sh<br>
+  или<br>
+  npm install npm -g<br>`,
+      `<br>Поиск пакетов в npm<br>
+  <br>npm search hook.io<br>
+  <br>Подсказка: Можно также использовать search.npmjs.org<br>
+  Вторая подсказка: Для поиска необходимо знать имя нужного пакета (всё прекрасно ищет по любому слову как в имени <br>пакета, так и в его описании, может неправильно перевёл?)  <br>
+  Просмотр информации о пакете  <br>
+  npm view hook.io<br>`,
+      `<br>Локальная установка пакетов<br>
+  <br>Для демонстрации возьмём пакет http-server.
+  http-server is a package we've written which provides an easy to use wrapper around node's core http.Server class. This module makes for a good example, since it's API provides both a CLI binary and a requirable node.js module.
+  http-server — пакет, который мы написали, предоставляет более простой интерфейс в использовании базового модуля http.Server из node.js. Этот модуль хороший пример использования API как для бинарного CLI, так и для подключаемого модуля node.js.<br>
+  <br>npm install http-server<br>  
+  <br>Так мы установим http-server в нашей рабочей директории.<br>
+  Вы увидите новую папку в node_modules. Сейчас можете не обращать на это внимание.<br>`,
+      `<br>Понимание разницы между глобальной и локальной установкой<br>
+  <br>По умолчанию npm будет устанавливать все пакеты в локальном каталоге, в которым вы сейчас работаете. Это правильно. Это может показаться немного запутанным, если вы раньше работали с предыдущими системами управления пакетами.<br>
+  Например:<br>
+  mkdir anotherapp/<br>
+   cd anotherapp/<br>
+   touch test.js  <br>
+  test.js  <br>
+  var HTTPServer = require('http-server');  <br>
+  теперь запустим наш скрипт<br>
+  node test.js  <br>
+  мы получим эту ошибку:<br>
+  node.js:134<br>
+          throw e; // process.nextTick error, or 'error' event on first tick<br>
+          ^<br>
+  Error: Cannot find module 'http-server'<br>
+      at Function._resolveFilename (module.js:326:11)<br>
+      at Function._load (module.js:271:25)<br>
+      at require (module.js:355:19)<br>
+      at Object.<anonymous> (/Users/maraksquires/dev/nodeapps/anotherapp/test.js:1:80)<br>
+      at Module._compile (module.js:411:26)<br>
+      at Object..js (module.js:417:10)<br>
+      at Module.load (module.js:343:31)<br>
+      at Function._load (module.js:302:12)<br>
+      at Array.<anonymous> (module.js:430:10)<br>
+      at EventEmitter._tickCallback (node.js:126:26)  <br>
+  Это вполне логично, мы установили http-server локально в "/mynewapp/", а не в "/anotherapp/".<br>
+  Есть два решения в этой ситуации:<br>
+  а) Установить ещё раз пакет, но локально в наше новое приложение<br>
+  cd anotherapp/<br>
+   npm install http-server  <br>
+  б) Установить пакет глобально<br>
+  npm install http-server -g`
+    ];
+
+    var yarn = [
+      `<br>Начало работы с Yarn<br>
+  <br>Инициализация нового проекта происходит командой:  <br>
+  <br>yarn init<br>
+  <br>Чтобы быстро создать файл, и автоматом ответить на все вопросы yes,
+  можно запустить команду с флагом -y  <br>
+  <br>yarn init -y<br>
+  <br>После этого, в корне проекта будет создан файл package.json. Он будет самую малось отличаться, от того если бы вы создали его с помощью npm. Но это абсолютно не критично. Так как yarn и npm полностью взаимозаменяемы.<br>`,
+      `<br>Старт нового проекта<br>
+  <br>yarn init<br>
+  <br> Установка пакета  <br>
+  <br>yarn add [package] // установит пакет и запишет его в зависимости Dependencies
+  yarn add [package]@[version] // установит пакет определенной версии
+  yarn add [package]@[tag] // установит пакет определенной версии<br>`,
+      `<br>Установка пакета с записью в другие категории зависимостей<br>
+
+  <br> Можно установить пакет в devDependencies, peerDependencies, and optionalDependencies :<br>
+  
+  <br>yarn add [package] --dev
+  yarn add [package] --peer
+  yarn add [package] --optional
+  Обновление зависимости<br>
+  
+  <br>yarn upgrade [package]
+  yarn upgrade [package]@[version]
+  yarn upgrade [package]@[tag]
+  Удаление зависимости<br>
+  
+  <br>yarn remove [package]
+  Установить все зависимости проекта <br>
+  
+  <br>yarn<br>
+  или<br>
+  
+  <br> yarn install<br>`,
+      `<br>Оффлайн установка пакетов в Yarn<br>
+  <br>Если вы попытаетесь установить пакет с отключенным интернетом, то yarn выдаст ошибку и предложит воспользоваться флагом —offline.<br>
+  
+  <br>Этот флаг позволяет устанавливать пакеты, которые уже устанавливались ранее и сохранились в кэше. Для примера, установим jquery:<br>
+  
+  <br>yarn add jquery --offline<br>`
+    ];
+
+    var instruction = prompt("Введите git или yarn или npm");
+
+    if (instruction === "git") {
+      instruction = generateHTML(git);
+    } else if (instruction === "yarn") {
+      instruction = generateHTML(yarn);
+    } else if (instruction === "npm") {
+      instruction = generateHTML(npm);
+    }
+
+    document.write(instruction);
+
+    function generateHTML(arr) {
+      var html = `<section>`;
+      for (var j = 0; j < arr.length; j++) {
+        html += `<div>${arr[j]}</div>`;
+      }
+      html += `</section>`;
+      return html;
+    }
+
+  </script>
+</body>
+
+</html>
