@@ -111,7 +111,7 @@ function _every(arr, cb) {
   return true;
 }
 
-//проверяет массив и возращает true если хоть один елемент массива  возращат true результата вызова callback function
+//проверяет массив и возращает true если хоть один елемент массива  возращат true результата вызова callback function.
 var arr = [1, 2, 1, 2, 3, 10];
 var arr2 = ["my", "first", "function", "contact"];
 
