@@ -18,8 +18,11 @@ function selectItem(command) {
       bufferElement = target.parentElement;
       if (bufferElement && !(target.parentElement === document.body)) {
         replace();
-        target.parentElement.classList.add("previous");
+        if (target.parentElement !== document.body) {
+          target.parentElement.classList.add("previous");
+        }
         target.classList.remove("previous");
+
         for (var i = 0; i < target.parentElement.children.length; i++) {
           if (target === target.parentElement.children[i]) {
             childN = i;
