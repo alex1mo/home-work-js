@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="catalog.js" defer></script>
+  <style>
+    * {
+      margin: 5px;
+      padding: 5px;
+    }
+
+    div {
+      border-left: black 1px solid;
+      visibility: hidden;
+    }
+
+    .button {
+      position: fixed;
+      left: calc(50% - 410px / 2);
+      z-index: 1;
+      display: flex;
+      width: 400px;
+      height: 50px;
+      border: none;
+      visibility: visible;
+    }
+
+    button {
+      width: 100px;
+      height: 50px;
+    }
+
+    #root {
+      position: absolute;
+    }
+
+    .previous {
+      border: solid red 1px;
+      visibility: visible;
+    }
+
+    .previous>div {
+      visibility: visible;
+    }
+
+    .active {
+      border: solid black 3px;
+      visibility: visible;
+    }
+
+    .active div {
+      visibility: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="button">
+    <button onclick="selectItem('down')">down</button>
+    <button onclick="selectItem('up')">up</button>
+    <button onclick="selectItem('left')">left</button>
+    <button onclick="selectItem('right')">right</button>
+    <button onclick="selectItem('add')">add</button>
+    <button onclick="selectItem('delete')">delete</button>
+  </div>
+  <div id="root" class="active">0
+    <div>1
+      <div>6
+        <div>13
+          <div>14</div>
+          <div>21</div>
+        </div>
+      </div>
+      <div>7</div>
+    </div>
+    <div>2
+      <div>8
+        <div>15
+          <div>20</div>
+          <div>19</div>
+        </div>
+      </div>
+      <div>9</div>
+    </div>
+    <div>3
+      <div>10
+        <div>16</div>
+      </div>
+    </div>
+    <div>4
+      <div>5</div>
+      <div>11
+        <div>17</div>
+        <div>18</div>
+      </div>
+      <div>12</div>
+    </div>
+  </div>
+  <!-- <button onclick="_click(1)">+</button>
+  <div>0</div>
+  <button onclick="_click(-1)">-</button> -->
+</body>
+
+</html>
