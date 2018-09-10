@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #winner,
+    #root {
+      padding: 10px;
+      width: 70%;
+      height: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #winner div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      border: none
+    }
+
+    #winner div:last-child>div {
+      border: black solid 1px;
+      height: 100%;
+      width: 50%;
+    }
+
+    #root {
+      height: 50%;
+      flex-wrap: wrap;
+      cursor: pointer;
+
+      flex-direction: row;
+    }
+
+    #winner>div,
+    #root>div {
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      box-sizing: border-box;
+
+    }
+
+    #root>div {
+      width: 33%;
+      height: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    span {
+      display: block;
+      transform: rotate(45deg);
+      transform-origin: center;
+      text-align: center;
+      user-select: none;
+      font-size: 100px;
+      z-index: -1;
+    }
+  </style>
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <div id="winner">
+    <div>user = 0</div>
+    <div>computer = 0</div>
+  </div>
+  <div id='root'></div>
+</body>
+
+</html>
