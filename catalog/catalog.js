@@ -1,5 +1,5 @@
 var target = document.querySelector("#root");
-var childN = 0;
+var childN = 1;
 var rootArr = target.textContent.split("\n");
 newArr(rootArr);
 
@@ -7,12 +7,12 @@ function selectItem(command) {
   var bufferElement;
   switch (command) {
     case "down":
-      bufferElement = target.children[1];
+      bufferElement = target.children[childN];
       if (bufferElement) {
         replace();
         target.parentElement.classList.add("previous");
         target.parentElement.parentElement.classList.remove("previous");
-        childN = 0;
+        childN = 1;
       }
       break;
     case "up":
