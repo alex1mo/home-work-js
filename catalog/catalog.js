@@ -4,9 +4,10 @@ var rootArr = target.textContent.split("\n");
 newArr(rootArr);
 
 function selectItem(command) {
+  var bufferElement;
   switch (command) {
     case "down":
-      var bufferElement = target.children[0];
+      bufferElement = target.children[1];
       if (bufferElement) {
         replace();
         target.parentElement.classList.add("previous");
@@ -91,10 +92,12 @@ function selectItem(command) {
   console.log("в target " + j + " елементов");
 
   function replace() {
-    //перезаписаывает стиль елемента
+    var elem = target.children[0];
+    target.removeChild(elem);
     target.classList.remove("active");
     target = bufferElement;
     target.classList.add("active");
+    target.insertBefore(elem, target.children[0]);
   }
 
   function depth(e, index = 0) {
