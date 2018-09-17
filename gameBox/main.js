@@ -67,7 +67,7 @@ var t;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function start() {
   randomBalls(13);
-  newColor();
+  resetBall();
   seconds = setInterval(() => {
     timer.time--;
     timer.tag.textContent = timer.time;
@@ -135,6 +135,7 @@ var oY;
 window.addEventListener("mousedown", function(e) {
   if (e.target.hasAttribute("ball")) {
     ball.tag = e.target;
+    ball.tag.setAttribute("ball", "active");
     ball.color = getComputedStyle(ball.tag).backgroundColor;
     oX = e.clientX - ball.tag.getBoundingClientRect().x;
     oY = e.clientY - ball.tag.getBoundingClientRect().y;
@@ -194,6 +195,9 @@ window.document.querySelector("#start").addEventListener("click", function(e) {
   box_b.sum = 0;
   box_b.tag.textContent = box_b.sum;
   body.tag.removeAttribute("style");
+  if (document.querySelector(".window")) {
+    document.body.removeChild(document.querySelector(".window"));
+  }
   start();
 });
 
@@ -204,7 +208,7 @@ function randomBalls(v) {
   //создает определенное количетсво шаров на поле
   if (v) {
     var div = document.createElement("div");
-    div.setAttribute("ball", "");
+    div.setAttribute("ball", "negative");
     div.classList.add(color[parseInt(Math.random() * 3)]);
     div.style.top =
       boxes.height +
@@ -289,29 +293,23 @@ function deleteBall() {
   ball.numberBall--;
 }
 
-function newColor() {
-  //меняте цвет
+function resetBall() {
+  // меняте цвет
   resetColor = setInterval(function() {
+    let i = 0;
     let balls = document.querySelector("#balls").children;
-    for (let i = 1; i < balls.length; i++) {
-      let buffer = null;
-      if (ball.tag === balls[i]) {
+    while (true) {
+      if (document.querySelector(`[ball="negative"]`)) {
+        document
+          .querySelector("#balls")
+          .removeChild(document.querySelector(`[ball="negative"]`));
+        i++;
         continue;
       }
-      for (let j = 0; j < balls[i].classList.length; j++) {
-        if (balls[i].classList[j] === "red") {
-          buffer = "red";
-          break;
-        } else if (balls[i].classList[j] === "green") {
-          buffer = "green";
-          break;
-        } else if (balls[i].classList[j] === "blue") {
-          buffer = "blue";
-          break;
-        }
-      }
-      balls[i].classList.remove(buffer);
-      balls[i].classList.add(color[parseInt(Math.random() * 3)]);
+      break;
     }
+    randomBalls(i);
   }, 1000);
 }
+
+///
