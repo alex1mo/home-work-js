@@ -146,6 +146,11 @@ window.addEventListener("mousemove", function(e) {
     ball.information = ball.tag.getBoundingClientRect();
     ball.tag.style.left = e.clientX - oX + "px";
     ball.tag.style.top = e.clientY - oY + "px";
+  }
+});
+
+window.addEventListener("mouseup", function(e) {
+  if (ball.tag) {
     if (
       crash(box_r.information, ball.information) &&
       box_r.color === ball.color
@@ -162,12 +167,6 @@ window.addEventListener("mousemove", function(e) {
     ) {
       animation(ball);
     }
-  }
-  return;
-});
-
-window.addEventListener("mouseup", function(e) {
-  if (ball.tag) {
     ball.tag = null;
   }
 });
@@ -188,6 +187,12 @@ window.document.querySelector("#start").addEventListener("click", function(e) {
   }
   timer.time = 60;
   timer.tag.textContent = timer.time;
+  box_r.sum = 0;
+  box_r.tag.textContent = box_r.sum;
+  box_g.sum = 0;
+  box_g.tag.textContent = box_g.sum;
+  box_b.sum = 0;
+  box_b.tag.textContent = box_b.sum;
   body.tag.removeAttribute("style");
   start();
 });
