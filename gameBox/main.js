@@ -85,10 +85,12 @@ function start() {
       }
       break;
     }
-    let html = `<div class="window"><span>Ваше имя</span><input type="text"><div><button>OK</button><button>CANCEL</button></div>
-    </div>`;
+    let html = `<span>Ваше имя</span><input type="text"><div><button>OK</button><button>CANCEL</button></div>`;
+    let div = document.createElement("div");
+    div.classList.add("window");
+    div.innerHTML += html;
     body.tag.style.boxShadow = `inset 0px 0px 10px 100vw rgba(0,0,0,0.6)`;
-    // body.tag.innerHTML += html;
+    body.tag.appendChild(div);
     var userName = "";
 
     document
