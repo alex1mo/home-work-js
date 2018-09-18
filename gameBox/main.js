@@ -168,7 +168,10 @@ window.addEventListener("mouseup", function(e) {
     ) {
       animation(ball);
     }
-    ball.tag = null;
+    if (ball.tag && ball.tag.getAttribute("ball") === "active") {
+      ball.tag.setAttribute("ball", "negative");
+      ball.tag = null;
+    }
   }
 });
 
