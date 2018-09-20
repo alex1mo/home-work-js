@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > div {
+  border: 5px solid black;
+  width: 100%;
+  flex: 1;
+  overflow: scroll;
+}
+
+#console {
+  background: black;
+  color: rgb(206, 176, 176);
+}
+
+.string {
+  animation: str 1s linear infinite;
+}
+
+#result {
+  background: black;
+}
+@keyframes str {
+  50% {
+    color: black;
+  }
+  100% {
+    color: white;
+  }
+}
