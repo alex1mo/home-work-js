@@ -29,7 +29,32 @@ body > div {
 
 #result {
   background: black;
+  color: rgb(206, 176, 176);
 }
+
+#branch {
+  position: relative;
+  background-color: black;
+}
+
+#branch > div {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#branch > div > div:nth-child(odd) {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+#branch > div > div:nth-child(even) {
+  width: 30px;
+  height: 4px;
+}
+
 @keyframes str {
   50% {
     color: black;
