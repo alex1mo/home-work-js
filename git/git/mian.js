@@ -133,11 +133,8 @@ function positionEup(pos, div, name) {
     color: div.getAttribute("color"),
     position: pos[0]
   };
-  if (!target) {
-    branch[name].position = "center";
-  }
   document.querySelector("#branch").appendChild(div);
-  endPosition(div);
+  endPosition(div, div.previousElementSibling, branch[name].position);
 }
 
 function positionEdown(pos, div, name) {
@@ -146,53 +143,24 @@ function positionEdown(pos, div, name) {
     color: div.getAttribute("color"),
     position: pos[1]
   };
-  if (!target) {
-    branch[name].position = "center";
-  }
   document.querySelector("#branch").appendChild(div);
-  endPosition(div);
+  endPosition(div, div.previousElementSibling, branch[name].position);
 }
 
-function endPosition(div) {
-  var xy1 = div.getBoundingClientRect();
+function endPosition(div, target, pos) {
   debugger;
-
-  if (target && branch[target.getAttribute("name")].position === "up" && div) {
+  var xy1 = div.getBoundingClientRect();
+  if (target && pos === "up") {
     var xy2 = target.getBoundingClientRect();
     div.style.left = `${xy2.right + 30}px`;
     div.style.top = `${xy2.top -
       document.querySelector("#branch").getBoundingClientRect().top -
       30}px`;
-  } else if (
-    target &&
-    branch[target.getAttribute("name")].position === "down" &&
-    div
-  ) {
+  } else if (target && pos === "down") {
     var xy2 = target.getBoundingClientRect();
     div.style.left = `${xy2.right + 30}px`;
     div.style.top = `${xy2.top -
       document.querySelector("#branch").getBoundingClientRect().top +
       30}px`;
-  } else if (
-    target &&
-    branch[target.getAttribute("name")].position === "center" &&
-    div
-  ) {
-    debugger;
-    if (pos[2] === true) {
-      var xy2 = target.getBoundingClientRect();
-      div.style.left = `${xy2.right + 30}px`;
-      div.style.top = `${xy2.top -
-        document.querySelector("#branch").getBoundingClientRect().top -
-        30}px`;
-      pos[2] = !pos[2];
-    } else {
-      var xy2 = target.getBoundingClientRect();
-      div.style.left = `${xy2.right + 30}px`;
-      div.style.top = `${xy2.top -
-        document.querySelector("#branch").getBoundingClientRect().top +
-        30}px`;
-      pos[2] = !pos[2];
-    }
   }
 }
